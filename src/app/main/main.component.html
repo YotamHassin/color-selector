@@ -1,0 +1,83 @@
+
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div class="container">
+  <div class="row">
+    <button class="btn btn-lg btn-outline-primary text-capitalize" (click)="openAddModal()">add new color</button>
+  </div>
+
+  <div class="table">
+    <div class="row">
+      <h5 class="col-4">Id</h5>
+      <h5 class="col-4">Color Name</h5>
+      <h5 class="col-4">Color</h5>
+    </div>
+  
+    <div class="row" [style.border]="itemIndex % 2 == 0 ? 'dotted 1px black': ''" 
+    *ngFor="let color of colors; let itemIndex = index" >
+      <span class="col-4">{{color.id}}</span>
+      <span class="col-4">{{color.name}}</span>
+      <span class="col-4" (click)="openRandomModal(color, itemIndex)" [style.backgroundColor]="color.color"></span>
+    </div>
+  </div>
+
+  <h3>Log</h3>
+  <div class="row" *ngFor="let logItem of logs; let itemIndex = index">
+    <span class="col-12">{{logItem}}</span>
+  </div>
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<ng-template #modalTemplate let-modalService>
+  <div class="modal-header">
+    <h5 class="modal-title text-capitalize" id="modal-confirm">create new color</h5>
+    <button tabindex="0" type="button" class="close" aria-label="Close" (click)="modalService.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+        <div class="row">
+            <span class="col-6">
+              <label for="colorName" class="text-capitalize">
+                <span class="badge badge-danger">&bull;</span>color name
+                <input class="form-control form-control-sm" type="text" placeholder="Color Name" 
+                  [(ngModel)]="newColor.name" [ngModelOptions]="{standalone: true}"
+                  name="colorName" #colorName="ngModel" required />
+              </label>
+            </span>
+            <span class="col-6">
+              <label for="color" class="text-capitalize">
+                <span class="badge badge-danger">&bull;</span>color
+                <input class="form-control form-control-sm" type="text" placeholder="Color" 
+                  [(ngModel)]="newColor.color" [ngModelOptions]="{standalone: true}"
+                  name="color" #color="ngModel" required />
+              </label>
+            </span>
+          </div>
+          <div class="row text-capitalize m-1 my-2" *ngIf="colorName.invalid && (colorName.dirty || colorName.touched)" >
+            <div class="badge badge-warning" *ngIf="colorName.errors?.required">
+              color name is required.
+            </div>
+          </div>
+          <div class="row text-capitalize m-1 my-2" *ngIf="color.invalid && (color.dirty || color.touched)" >
+            <div class="badge badge-warning" *ngIf="color.errors?.required">
+              color is required.
+            </div>
+          </div>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+    <button tabindex="0" type="button" class="btn btn-outline-primary text-capitalize" 
+      aria-label="Save" [disabled]="isSaveDisabled"
+      (click)="modalService.close('Save click')">save
+      changes</button>
+    <button tabindex="0" type="button" class="btn btn-outline-dark text-capitalize" 
+      aria-label="Close"
+      (click)="modalService.dismiss('Close click')">close</button>
+  </div>
+</ng-template>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+

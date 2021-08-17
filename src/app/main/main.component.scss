@@ -1,0 +1,10 @@
+
+
+.table {
+	.row {
+		&::nth-child(2) {
+			background-color: aliceblue;
+		}
+		
+	}
+}

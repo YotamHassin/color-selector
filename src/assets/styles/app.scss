@@ -1,0 +1,35 @@
+/* app general styles */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+
+
+// todo: title font?
+// https://blog.hubspot.com/marketing/best-free-fonts-designers
+// https://www.dafont.com/made-canvas.font
+// https://www.behance.net/gallery/20118341/POLYA-Free-Font
+
+//$font: "Comic Sans MS", "Comic Sans", cursive;
+//.tmp { font-family: $font; }
+

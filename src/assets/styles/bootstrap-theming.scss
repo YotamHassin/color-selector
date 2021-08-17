@@ -1,0 +1,39 @@
+/* bootstrap-theming styles */
+
+// https://getbootstrap.com/docs/4.0/getting-started/theming/
+
+/* 
+$theme-colors: (
+  "light": #900
+);
+$theme-colors: map-remove($theme-colors, "success", "info", "danger");
+$theme-colors: (
+  // override
+  //"primary": #0074d9,
+  //"danger": #ff4136,
+  // add
+  //"custom-color": #900
+); 
+*/
+
+
+
+/* 
+// font size vs element size?
+$xs: 0px;
+$md: 768px;
+
+body, input, textarea, .form-control {
+    @media (max-width: $xs) {
+      //font-size: 10px;
+      font-size: 0.3rem;
+    }
+    
+    @media (max-width: $md) {
+        font-size: 1rem;
+        //font-size: 10px;
+    }
+}
+ */
+
+/* $font-family-base, $font-size-base, and $line-height-base attributes as our typographic base applied to the <body>. */
